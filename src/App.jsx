@@ -1,5 +1,6 @@
 import "./App.css";
 import Magnet from "./Magnet";
+import ProjectCard from "./ProjectCard";
 
 const FW = 1512;
 const FH = 982;
@@ -385,6 +386,42 @@ function App() {
           rotate={m.rotate}
         />
       ))}
+      <ProjectCard
+        src="/src/assets/musicbox.png"
+        startX={px(213)}
+        startY={py(238)}
+        width={pw(180)}
+        height={ph(182)}
+        rotate={15.5}
+        projectId="musicbox"
+      />
+      <ProjectCard
+        src="/src/assets/brose.png"
+        startX={px(598)}
+        startY={py(523)}
+        width={pw(186)}
+        height={ph(182)}
+        rotate={-5.1}
+        projectId="brose"
+      />
+      <ProjectCard
+        src="/src/assets/fbf.png"
+        startX={px(1096)}
+        startY={py(612)}
+        width={pw(187)}
+        height={ph(182)}
+        rotate={-5.1}
+        projectId="fbf"
+      />
+      <ProjectCard
+        src="/src/assets/royallib.png"
+        startX={px(802)}
+        startY={py(703)}
+        width={pw(189)}
+        height={ph(182)}
+        rotate={18.8}
+        projectId="royallib"
+      />
     </div>
   );
 }
