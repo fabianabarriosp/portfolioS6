@@ -1,9 +1,15 @@
 import "./App.css";
+import Magnet from "./Magnet";
 
 function App() {
   return (
     <div className="fridge-container">
-      <img src="/src/assets/fridge.png" className="fridge-bg" alt="fridge" />
+      <Magnet
+        src="/src/assets/london.png"
+        startX={600}
+        startY={100}
+        width={80}
+      />
     </div>
   );
 }
