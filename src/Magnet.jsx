@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-function Magnet({ src, startX, startY, width }) {
+function Magnet({ src, startX, startY, width, height, rotate }) {
   const [pos, setPos] = useState({ x: startX, y: startY });
   const [dragging, setDragging] = useState(false);
   const offsetRef = useRef({ x: 0, y: 0 });
@@ -39,30 +39,21 @@ function Magnet({ src, startX, startY, width }) {
     function onMouseUp() {
       if (!dragging) return;
       setDragging(false);
-
       let vx = velocityRef.current.x * 1.6;
       let vy = velocityRef.current.y * 1.6;
-
       function bounce() {
         vx *= 0.88;
         vy *= 0.88;
-
         const newX = posRef.current.x + vx;
         const newY = posRef.current.y + vy;
-
-        // keep it on screen
         const maxX = window.innerWidth - (width || 100);
-        const maxY = window.innerHeight - (width || 100);
+        const maxY = window.innerHeight - (height || width || 100);
         const clampedX = Math.max(0, Math.min(newX, maxX));
         const clampedY = Math.max(0, Math.min(newY, maxY));
-
-        // bounce off edges
         if (newX < 0 || newX > maxX) vx *= -0.5;
         if (newY < 0 || newY > maxY) vy *= -0.5;
-
         posRef.current = { x: clampedX, y: clampedY };
         setPos({ x: clampedX, y: clampedY });
-
         if (Math.abs(vx) > 0.3 || Math.abs(vy) > 0.3) {
           animRef.current = requestAnimationFrame(bounce);
         }
@@ -87,12 +78,13 @@ function Magnet({ src, startX, startY, width }) {
         left: pos.x,
         top: pos.y,
         width: width || 100,
+        height: height || "auto",
         cursor: dragging ? "grabbing" : "grab",
         userSelect: "none",
         willChange: "transform",
         transform: dragging
-          ? "scale(1.1) rotate(3deg)"
-          : "scale(1) rotate(0deg)",
+          ? `scale(1.1) rotate(${rotate || 0}deg)`
+          : `scale(1) rotate(${rotate || 0}deg)`,
         transition: dragging ? "transform 0.1s" : "transform 0.3s",
         filter: dragging
           ? "drop-shadow(0px 10px 15px rgba(0,0,0,0.35))"
