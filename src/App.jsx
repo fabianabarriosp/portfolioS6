@@ -19,7 +19,6 @@ function ph(figmaH) {
 }
 
 const MAGNETS = [
-  // Letters - FABIANA
   {
     id: "F",
     src: "/src/assets/F.png",
@@ -83,8 +82,6 @@ const MAGNETS = [
     fh: 84,
     rotate: -13.6,
   },
-
-  // Letters - BARRIOS
   {
     id: "B2",
     src: "/src/assets/B2.png",
@@ -148,8 +145,6 @@ const MAGNETS = [
     fh: 85,
     rotate: 12.6,
   },
-
-  // Travel stickers & magnets
   {
     id: "venezuela",
     src: "/src/assets/venezuela.png",
@@ -196,15 +191,6 @@ const MAGNETS = [
     rotate: 9.6,
   },
   {
-    id: "star",
-    src: "/src/assets/star.png",
-    fx: 1343,
-    fy: 98,
-    fw: 78,
-    fh: 77,
-    rotate: 0,
-  },
-  {
     id: "malta",
     src: "/src/assets/malta.png",
     fx: 1354,
@@ -223,6 +209,15 @@ const MAGNETS = [
     rotate: -16.7,
   },
   {
+    id: "star",
+    src: "/src/assets/star.png",
+    fx: 1343,
+    fy: 98,
+    fw: 78,
+    fh: 77,
+    rotate: 0,
+  },
+  {
     id: "mexico",
     src: "/src/assets/mexico.png",
     fx: 229,
@@ -239,15 +234,6 @@ const MAGNETS = [
     fw: 137,
     fh: 120,
     rotate: 11.2,
-  },
-  {
-    id: "button",
-    src: "/src/assets/button.png",
-    fx: 1233,
-    fy: 622,
-    fw: 64,
-    fh: 64,
-    rotate: 18.1,
   },
   {
     id: "dublin",
@@ -295,17 +281,6 @@ const MAGNETS = [
     rotate: 23.9,
   },
   {
-    id: "paperclip",
-    src: "/src/assets/paperclip.png",
-    fx: 605,
-    fy: 491,
-    fw: 35,
-    fh: 85,
-    rotate: 4.9,
-  },
-
-  // Photos & film
-  {
     id: "photostrip",
     src: "/src/assets/photostrip.png",
     fx: 264,
@@ -332,43 +307,26 @@ const MAGNETS = [
     fh: 203,
     rotate: 0,
   },
+];
 
-  // Project cards
+const MAGNETS_ON_TOP = [
   {
-    id: "trencadis",
-    src: "/src/assets/trencadis.png",
-    fx: 213,
-    fy: 238,
-    fw: 180,
-    fh: 182,
-    rotate: 15.5,
+    id: "paperclip",
+    src: "/src/assets/paperclip.png",
+    fx: 605,
+    fy: 491,
+    fw: 35,
+    fh: 85,
+    rotate: 4.9,
   },
   {
-    id: "brose",
-    src: "/src/assets/brose.png",
-    fx: 598,
-    fy: 523,
-    fw: 186,
-    fh: 182,
-    rotate: -5.1,
-  },
-  {
-    id: "fbf",
-    src: "/src/assets/fbf.png",
-    fx: 1096,
-    fy: 612,
-    fw: 187,
-    fh: 182,
-    rotate: -5.1,
-  },
-  {
-    id: "royallib",
-    src: "/src/assets/royallib.png",
-    fx: 802,
-    fy: 703,
-    fw: 189,
-    fh: 182,
-    rotate: 18.8,
+    id: "button",
+    src: "/src/assets/button.png",
+    fx: 1233,
+    fy: 622,
+    fw: 64,
+    fh: 64,
+    rotate: 18.1,
   },
 ];
 
@@ -386,6 +344,7 @@ function App() {
           rotate={m.rotate}
         />
       ))}
+
       <ProjectCard
         src="/src/assets/musicbox.png"
         startX={px(213)}
@@ -396,7 +355,7 @@ function App() {
         projectId="musicbox"
       />
       <ProjectCard
-        src="/src/assets/brose.png"
+        src="/src/assets/brose.mov"
         startX={px(598)}
         startY={py(523)}
         width={pw(186)}
@@ -405,7 +364,7 @@ function App() {
         projectId="brose"
       />
       <ProjectCard
-        src="/src/assets/fbf.png"
+        src="/src/assets/fbf.gif"
         startX={px(1096)}
         startY={py(612)}
         width={pw(187)}
@@ -422,6 +381,19 @@ function App() {
         rotate={18.8}
         projectId="royallib"
       />
+
+      {MAGNETS_ON_TOP.map((m) => (
+        <Magnet
+          key={m.id}
+          src={m.src}
+          startX={px(m.fx)}
+          startY={py(m.fy)}
+          width={pw(m.fw)}
+          height={ph(m.fh)}
+          rotate={m.rotate}
+          zIndexOverride={10}
+        />
+      ))}
     </div>
   );
 }

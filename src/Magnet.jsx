@@ -1,6 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 
-function Magnet({ src, startX, startY, width, height, rotate }) {
+function Magnet({
+  src,
+  startX,
+  startY,
+  width,
+  height,
+  rotate,
+  zIndexOverride,
+}) {
   const [pos, setPos] = useState({ x: startX, y: startY });
   const [dragging, setDragging] = useState(false);
   const offsetRef = useRef({ x: 0, y: 0 });
@@ -35,7 +43,6 @@ function Magnet({ src, startX, startY, width, height, rotate }) {
       posRef.current = newPos;
       setPos(newPos);
     }
-
     function onMouseUp() {
       if (!dragging) return;
       setDragging(false);
@@ -54,13 +61,11 @@ function Magnet({ src, startX, startY, width, height, rotate }) {
         if (newY < 0 || newY > maxY) vy *= -0.5;
         posRef.current = { x: clampedX, y: clampedY };
         setPos({ x: clampedX, y: clampedY });
-        if (Math.abs(vx) > 0.3 || Math.abs(vy) > 0.3) {
+        if (Math.abs(vx) > 0.3 || Math.abs(vy) > 0.3)
           animRef.current = requestAnimationFrame(bounce);
-        }
       }
       animRef.current = requestAnimationFrame(bounce);
     }
-
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("mouseup", onMouseUp);
     return () => {
@@ -89,7 +94,7 @@ function Magnet({ src, startX, startY, width, height, rotate }) {
         filter: dragging
           ? "drop-shadow(0px 10px 15px rgba(0,0,0,0.35))"
           : "drop-shadow(0px 2px 4px rgba(0,0,0,0.15))",
-        zIndex: dragging ? 999 : 1,
+        zIndex: dragging ? 999 : (zIndexOverride ?? 1),
       }}
       alt=""
       draggable={false}
