@@ -11,6 +11,7 @@ function Magnet({
 }) {
   const [pos, setPos] = useState({ x: startX, y: startY });
   const [dragging, setDragging] = useState(false);
+  const [wasLastDragged, setWasLastDragged] = useState(false);
   const offsetRef = useRef({ x: 0, y: 0 });
   const velocityRef = useRef({ x: 0, y: 0 });
   const lastPosRef = useRef({ x: startX, y: startY });
@@ -20,6 +21,7 @@ function Magnet({
   function onMouseDown(e) {
     if (animRef.current) cancelAnimationFrame(animRef.current);
     setDragging(true);
+    setWasLastDragged(true);
     offsetRef.current = {
       x: e.clientX - posRef.current.x,
       y: e.clientY - posRef.current.y,
@@ -74,6 +76,8 @@ function Magnet({
     };
   }, [dragging]);
 
+  const zIndex = dragging ? 999 : wasLastDragged ? 50 : (zIndexOverride ?? 1);
+
   return (
     <img
       src={src}
@@ -94,7 +98,7 @@ function Magnet({
         filter: dragging
           ? "drop-shadow(0px 10px 15px rgba(0,0,0,0.35))"
           : "drop-shadow(0px 2px 4px rgba(0,0,0,0.15))",
-        zIndex: dragging ? 999 : (zIndexOverride ?? 1),
+        zIndex,
       }}
       alt=""
       draggable={false}

@@ -281,13 +281,13 @@ const MAGNETS = [
     rotate: 23.9,
   },
   {
-    id: "photostrip",
-    src: "/src/assets/photostrip.png",
-    fx: 264,
-    fy: 488,
-    fw: 255,
-    fh: 374,
-    rotate: -9.2,
+    id: "paperclip",
+    src: "/src/assets/paperclip.png",
+    fx: 605,
+    fy: 491,
+    fw: 35,
+    fh: 85,
+    rotate: 4.9,
   },
   {
     id: "postit",
@@ -307,18 +307,6 @@ const MAGNETS = [
     fh: 203,
     rotate: 0,
   },
-];
-
-const MAGNETS_ON_TOP = [
-  {
-    id: "paperclip",
-    src: "/src/assets/paperclip.png",
-    fx: 605,
-    fy: 491,
-    fw: 35,
-    fh: 85,
-    rotate: 4.9,
-  },
   {
     id: "button",
     src: "/src/assets/button.png",
@@ -328,23 +316,20 @@ const MAGNETS_ON_TOP = [
     fh: 64,
     rotate: 18.1,
   },
+  {
+    id: "photostrip",
+    src: "/src/assets/photostrip.png",
+    fx: 264,
+    fy: 488,
+    fw: 255,
+    fh: 374,
+    rotate: -9.2,
+  },
 ];
 
 function App() {
   return (
     <div className="fridge-container">
-      {MAGNETS.map((m) => (
-        <Magnet
-          key={m.id}
-          src={m.src}
-          startX={px(m.fx)}
-          startY={py(m.fy)}
-          width={pw(m.fw)}
-          height={ph(m.fh)}
-          rotate={m.rotate}
-        />
-      ))}
-
       <ProjectCard
         src="/src/assets/musicbox.png"
         startX={px(213)}
@@ -382,7 +367,7 @@ function App() {
         projectId="royallib"
       />
 
-      {MAGNETS_ON_TOP.map((m) => (
+      {MAGNETS.map((m) => (
         <Magnet
           key={m.id}
           src={m.src}
@@ -391,7 +376,7 @@ function App() {
           width={pw(m.fw)}
           height={ph(m.fh)}
           rotate={m.rotate}
-          zIndexOverride={10}
+          zIndexOverride={5}
         />
       ))}
     </div>
