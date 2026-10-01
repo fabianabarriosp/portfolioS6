@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import "./App.css";
 import Magnet from "./Magnet";
 import ProjectCard from "./ProjectCard";
@@ -328,6 +329,13 @@ const MAGNETS = [
 ];
 
 function App() {
+  const [, forceUpdate] = useState(0);
+  useEffect(() => {
+    const onResize = () => forceUpdate((n) => n + 1);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   return (
     <div className="fridge-container">
       <ProjectCard

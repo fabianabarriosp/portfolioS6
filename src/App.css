@@ -23,3 +23,10 @@ html,
   background-repeat: no-repeat;
   position: relative;
 }
+
+a[data-pin-href],
+[data-pin-log],
+.PIN_1,
+[id^="pinterest"] {
+  display: none !important;
+}

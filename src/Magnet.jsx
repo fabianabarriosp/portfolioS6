@@ -17,10 +17,20 @@ function Magnet({
   const lastPosRef = useRef({ x: startX, y: startY });
   const posRef = useRef({ x: startX, y: startY });
   const animRef = useRef(null);
+  const isDraggingRef = useRef(false);
+
+  // Reset position on resize
+  useEffect(() => {
+    if (!isDraggingRef.current) {
+      setPos({ x: startX, y: startY });
+      posRef.current = { x: startX, y: startY };
+    }
+  }, [startX, startY]);
 
   function onMouseDown(e) {
     if (animRef.current) cancelAnimationFrame(animRef.current);
     setDragging(true);
+    isDraggingRef.current = true;
     setWasLastDragged(true);
     offsetRef.current = {
       x: e.clientX - posRef.current.x,
@@ -48,6 +58,7 @@ function Magnet({
     function onMouseUp() {
       if (!dragging) return;
       setDragging(false);
+      isDraggingRef.current = false;
       let vx = velocityRef.current.x * 1.6;
       let vy = velocityRef.current.y * 1.6;
       function bounce() {
