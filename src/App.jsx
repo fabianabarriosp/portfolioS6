@@ -22,7 +22,7 @@ function ph(figmaH) {
 const MAGNETS = [
   {
     id: "F",
-    src: "/src/assets/F.png",
+    src: "/assets/F.png",
     fx: 545,
     fy: 315,
     fw: 66,
@@ -31,7 +31,7 @@ const MAGNETS = [
   },
   {
     id: "A1",
-    src: "/src/assets/A1.png",
+    src: "/assets/A1.png",
     fx: 620,
     fy: 322,
     fw: 62,
@@ -40,7 +40,7 @@ const MAGNETS = [
   },
   {
     id: "B1",
-    src: "/src/assets/B1.png",
+    src: "/assets/B1.png",
     fx: 697,
     fy: 350,
     fw: 60,
@@ -49,7 +49,7 @@ const MAGNETS = [
   },
   {
     id: "I1",
-    src: "/src/assets/I1.png",
+    src: "/assets/I1.png",
     fx: 765,
     fy: 330,
     fw: 30,
@@ -58,7 +58,7 @@ const MAGNETS = [
   },
   {
     id: "A2",
-    src: "/src/assets/A2.png",
+    src: "/assets/A2.png",
     fx: 813,
     fy: 330,
     fw: 63,
@@ -67,7 +67,7 @@ const MAGNETS = [
   },
   {
     id: "N",
-    src: "/src/assets/N.png",
+    src: "/assets/N.png",
     fx: 890,
     fy: 327,
     fw: 65,
@@ -76,7 +76,7 @@ const MAGNETS = [
   },
   {
     id: "A3",
-    src: "/src/assets/A3.png",
+    src: "/assets/A3.png",
     fx: 960,
     fy: 305,
     fw: 67,
@@ -85,7 +85,7 @@ const MAGNETS = [
   },
   {
     id: "B2",
-    src: "/src/assets/B2.png",
+    src: "/assets/B2.png",
     fx: 849,
     fy: 471,
     fw: 56,
@@ -94,7 +94,7 @@ const MAGNETS = [
   },
   {
     id: "A4",
-    src: "/src/assets/A4.png",
+    src: "/assets/A4.png",
     fx: 930,
     fy: 456,
     fw: 65,
@@ -103,7 +103,7 @@ const MAGNETS = [
   },
   {
     id: "R1",
-    src: "/src/assets/R1.png",
+    src: "/assets/R1.png",
     fx: 1015,
     fy: 450,
     fw: 67,
@@ -112,7 +112,7 @@ const MAGNETS = [
   },
   {
     id: "R2",
-    src: "/src/assets/R2.png",
+    src: "/assets/R2.png",
     fx: 1097,
     fy: 453,
     fw: 65,
@@ -121,7 +121,7 @@ const MAGNETS = [
   },
   {
     id: "I2",
-    src: "/src/assets/I2.png",
+    src: "/assets/I2.png",
     fx: 1188,
     fy: 451,
     fw: 20,
@@ -130,7 +130,7 @@ const MAGNETS = [
   },
   {
     id: "O",
-    src: "/src/assets/O.png",
+    src: "/assets/O.png",
     fx: 1232,
     fy: 465,
     fw: 65,
@@ -139,7 +139,7 @@ const MAGNETS = [
   },
   {
     id: "S",
-    src: "/src/assets/S.png",
+    src: "/assets/S.png",
     fx: 1307,
     fy: 445,
     fw: 70,
@@ -148,7 +148,7 @@ const MAGNETS = [
   },
   {
     id: "venezuela",
-    src: "/src/assets/venezuela.png",
+    src: "/assets/venezuela.png",
     fx: 200,
     fy: 55,
     fw: 99,
@@ -157,7 +157,7 @@ const MAGNETS = [
   },
   {
     id: "portugal",
-    src: "/src/assets/portugal.png",
+    src: "/assets/portugal.png",
     fx: 410,
     fy: 286,
     fw: 97,
@@ -166,7 +166,7 @@ const MAGNETS = [
   },
   {
     id: "london",
-    src: "/src/assets/london.png",
+    src: "/assets/london.png",
     fx: 750,
     fy: 23,
     fw: 130,
@@ -175,7 +175,7 @@ const MAGNETS = [
   },
   {
     id: "madrid",
-    src: "/src/assets/madrid.png",
+    src: "/assets/madrid.png",
     fx: 893,
     fy: 140,
     fw: 170,
@@ -184,7 +184,7 @@ const MAGNETS = [
   },
   {
     id: "malta",
-    src: "/src/assets/malta.png",
+    src: "/assets/malta.png",
     fx: 1350,
     fy: 305,
     fw: 95,
@@ -193,7 +193,7 @@ const MAGNETS = [
   },
   {
     id: "me",
-    src: "/src/assets/me.png",
+    src: "/assets/me.png",
     fx: 1137,
     fy: 100,
     fw: 227,
@@ -202,7 +202,7 @@ const MAGNETS = [
   },
   {
     id: "star",
-    src: "/src/assets/star.png",
+    src: "/assets/star.png",
     fx: 1330,
     fy: 133,
     fw: 70,
@@ -211,7 +211,7 @@ const MAGNETS = [
   },
   {
     id: "lasvegas",
-    src: "/src/assets/lasvegas.png",
+    src: "/assets/lasvegas.png",
     fx: 1027,
     fy: 14,
     fw: 241,
@@ -220,7 +220,7 @@ const MAGNETS = [
   },
   {
     id: "abudhabi",
-    src: "/src/assets/abudhabi.png",
+    src: "/assets/abudhabi.png",
     fx: 700,
     fy: 615,
     fw: 137,
@@ -229,7 +229,7 @@ const MAGNETS = [
   },
   {
     id: "dublin",
-    src: "/src/assets/dublin.png",
+    src: "/assets/dublin.png",
     fx: 605,
     fy: 800,
     fw: 155,
@@ -238,7 +238,7 @@ const MAGNETS = [
   },
   {
     id: "smiley",
-    src: "/src/assets/smiley.png",
+    src: "/assets/smiley.png",
     fx: 204,
     fy: 870,
     fw: 80,
@@ -247,7 +247,7 @@ const MAGNETS = [
   },
   {
     id: "singapore",
-    src: "/src/assets/singapore.png",
+    src: "/assets/singapore.png",
     fx: 1249,
     fy: 780,
     fw: 180,
@@ -256,7 +256,7 @@ const MAGNETS = [
   },
   {
     id: "switzerland",
-    src: "/src/assets/switzerland.png",
+    src: "/assets/switzerland.png",
     fx: 963,
     fy: 800,
     fw: 181,
@@ -265,7 +265,7 @@ const MAGNETS = [
   },
   {
     id: "arsenal",
-    src: "/src/assets/arsenal.png",
+    src: "/assets/arsenal.png",
     fx: 1258,
     fy: 560,
     fw: 160,
@@ -274,7 +274,7 @@ const MAGNETS = [
   },
   {
     id: "paperclip",
-    src: "/src/assets/paperclip.png",
+    src: "/assets/paperclip.png",
     fx: 577,
     fy: 461,
     fw: 35,
@@ -283,7 +283,7 @@ const MAGNETS = [
   },
   {
     id: "concert",
-    src: "/src/assets/concert ticket.png",
+    src: "/assets/concert ticket.png",
     fx: 320,
     fy: 30,
     fw: 391,
@@ -292,7 +292,7 @@ const MAGNETS = [
   },
   {
     id: "button",
-    src: "/src/assets/button.png",
+    src: "/assets/button.png",
     fx: 1235,
     fy: 578,
     fw: 64,
@@ -301,7 +301,7 @@ const MAGNETS = [
   },
   {
     id: "photostrip",
-    src: "/src/assets/photostrip.png",
+    src: "/assets/photostrip.png",
     fx: 254,
     fy: 500,
     fw: 255,
@@ -310,7 +310,7 @@ const MAGNETS = [
   },
   {
     id: "mexico",
-    src: "/src/assets/mexico.png",
+    src: "/assets/mexico.png",
     fx: 259,
     fy: 460,
     fw: 114,
@@ -319,7 +319,7 @@ const MAGNETS = [
   },
   {
     id: "postit",
-    src: "/src/assets/postit.png",
+    src: "/assets/postit.png",
     fx: 425,
     fy: 698,
     fw: 220,
@@ -339,7 +339,7 @@ function App() {
   return (
     <div className="fridge-container">
       <ProjectCard
-        src="/src/assets/musicbox.png"
+        src="/assets/musicbox.png"
         startX={px(210)}
         startY={py(180)}
         width={pw(240)}
@@ -348,7 +348,7 @@ function App() {
         projectId="musicbox"
       />
       <ProjectCard
-        src="/src/assets/brose.mov"
+        src="/assets/brose.mov"
         startX={px(558)}
         startY={py(493)}
         width={pw(186)}
@@ -357,7 +357,7 @@ function App() {
         projectId="brose"
       />
       <ProjectCard
-        src="/src/assets/fbf.gif"
+        src="/assets/fbf.gif"
         startX={px(1075)}
         startY={py(577)}
         width={pw(187)}
@@ -366,7 +366,7 @@ function App() {
         projectId="fbf"
       />
       <ProjectCard
-        src="/src/assets/royallib.png"
+        src="/assets/royallib.png"
         startX={px(759)}
         startY={py(605)}
         width={pw(225)}
