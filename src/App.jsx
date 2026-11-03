@@ -378,6 +378,7 @@ function App() {
       {MAGNETS.map((m) => (
         <Magnet
           key={m.id}
+          id={m.id}
           src={m.src}
           startX={px(m.fx)}
           startY={py(m.fy)}

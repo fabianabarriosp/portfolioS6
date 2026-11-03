@@ -30,3 +30,70 @@ a[data-pin-href],
 [id^="pinterest"] {
   display: none !important;
 }
+
+/* ---------- smiley "contact me!" magnet ---------- */
+
+.wiggle {
+  animation: wiggle 1.2s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+  20% {
+    rotate: -8deg;
+  }
+  40% {
+    rotate: 7deg;
+  }
+  60% {
+    rotate: -5deg;
+  }
+  80% {
+    rotate: 4deg;
+  }
+}
+
+.contact-label {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.contact-letter {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: 1em;
+  margin-left: -0.5em;
+  height: calc(50% + 14px);
+  transform-origin: bottom center;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1c1c1c;
+}
+
+.contact-letter-inner {
+  display: inline-block;
+  animation: wave 1.4s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wiggle,
+  .contact-letter-inner {
+    animation: none;
+  }
+}
