@@ -339,12 +339,12 @@ function App() {
   return (
     <div className="fridge-container">
       <ProjectCard
-        src="/assets/musicbox.png"
-        startX={px(210)}
-        startY={py(180)}
-        width={pw(240)}
-        height={ph(262)}
-        rotate={-3}
+        src="/assets/timemachine.mov"
+        startX={px(220)}
+        startY={py(215)}
+        width={pw(186)}
+        height={ph(182)}
+        rotate={-15}
         projectId="musicbox"
       />
       <ProjectCard
@@ -360,7 +360,7 @@ function App() {
         src="/assets/fbf.gif"
         startX={px(1075)}
         startY={py(577)}
-        width={pw(187)}
+        width={pw(186)}
         height={ph(182)}
         rotate={3.1}
         projectId="fbf"
@@ -368,9 +368,9 @@ function App() {
       <ProjectCard
         src="/assets/royallib.png"
         startX={px(759)}
-        startY={py(605)}
-        width={pw(225)}
-        height={ph(209)}
+        startY={py(625)}
+        width={pw(186)}
+        height={ph(182)}
         rotate={-2}
         projectId="royallib"
       />
