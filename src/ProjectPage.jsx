@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 
 const PROJECTS = {
   musicbox: {
-    title: "Trencadís: AR Filter Tribute to Gaudí",
+    title: "www.time-machine.com",
     description:
-      "An AR filter inspired by Gaudí's trencadís mosaic technique. Built as a tribute to his iconic stained glass and ceramic work.",
+      "A tribute to the World Wide Web, built as an interactive time machine.",
     color: "#f5f0e8",
   },
   brose: {
@@ -21,9 +21,9 @@ const PROJECTS = {
     color: "#e4f0ff",
   },
   royallib: {
-    title: "Royal Library — Amexio",
+    title: "KB Library — Amexio",
     description:
-      "An industry project with Amexio and the Royal Library, focused on engaging diverse audiences through modern design.",
+      "An industry project with Amexio, rethinking how the Royal Library can recoomend books without necesarily knowing what the users want.",
     color: "#e4ffe8",
   },
 };
