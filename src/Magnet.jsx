@@ -17,6 +17,7 @@ function Magnet({
   const [wasLastDragged, setWasLastDragged] = useState(false);
   const [exploding, setExploding] = useState(false);
   const [confetti, setConfetti] = useState(null);
+  const [smoke, setSmoke] = useState(false);
   const wrapRef = useRef(null);
   const offsetRef = useRef({ x: 0, y: 0 });
   const velocityRef = useRef({ x: 0, y: 0 });
@@ -75,6 +76,11 @@ function Magnet({
         e.clientX - mouseStartRef.current.x,
         e.clientY - mouseStartRef.current.y,
       );
+      if (id === "venezuela" && moved < 5) {
+        setSmoke(true);
+        setTimeout(() => setSmoke(false), 4200);
+        return;
+      }
       if (id === "arsenal" && moved < 5) {
         const r = wrapRef.current.getBoundingClientRect();
         setConfetti({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
@@ -151,6 +157,28 @@ function Magnet({
           alt=""
           draggable={false}
         />
+        {smoke && (
+          <div className="smoke" aria-hidden="true">
+            <div className="smoke-words">
+              {"where I'm from".split("").map((letter, i, all) => (
+                <span
+                  key={i}
+                  style={{
+                    "--from": (all.length - 1) / 2 - i,
+                    animationDelay: i * 0.06 + "s",
+                  }}
+                >
+                  {letter === " " ? "\u00A0" : letter}
+                </span>
+              ))}
+            </div>
+            <div className="smoke-wisps">
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
+        )}
 
         {isSmiley && (
           <div className="contact-label" aria-hidden="true">
