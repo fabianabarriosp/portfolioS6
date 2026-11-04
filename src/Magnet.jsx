@@ -18,6 +18,8 @@ function Magnet({
   const [exploding, setExploding] = useState(false);
   const [confetti, setConfetti] = useState(null);
   const [smoke, setSmoke] = useState(false);
+  const [photo, setPhoto] = useState(0);
+  const [clicks, setClicks] = useState(0);
   const wrapRef = useRef(null);
   const offsetRef = useRef({ x: 0, y: 0 });
   const velocityRef = useRef({ x: 0, y: 0 });
@@ -76,6 +78,11 @@ function Magnet({
         e.clientX - mouseStartRef.current.x,
         e.clientY - mouseStartRef.current.y,
       );
+      if (id === "me" && moved < 5) {
+        setPhoto((n) => (n + 1) % 3);
+        setClicks((n) => n + 1);
+        return;
+      }
       if (id === "venezuela" && moved < 5) {
         setSmoke(true);
         setTimeout(() => setSmoke(false), 4200);
@@ -143,6 +150,7 @@ function Magnet({
           className={isSmiley ? "wiggle" : undefined}
           style={{
             display: "block",
+            opacity: id === "me" ? 0 : 1,
             width: "100%",
             height: "100%",
             willChange: "transform",
@@ -157,6 +165,22 @@ function Magnet({
           alt=""
           draggable={false}
         />
+        {id === "me" &&
+          ["/assets/me.png", "/assets/me2.png", "/assets/me3.png"].map(
+            (photoSrc, i) => (
+              <img
+                key={photoSrc}
+                src={photoSrc}
+                alt=""
+                draggable={false}
+                className={photo === i ? "photo-fade on" : "photo-fade"}
+                style={{
+                  transform: `${dragging ? "scale(1.1)" : "scale(1)"} rotate(${rotate || 0}deg)`,
+                  scale: i === 0 ? "1" : "1.08",
+                }}
+              />
+            ),
+          )}
         {smoke && (
           <div className="smoke" aria-hidden="true">
             <div className="smoke-words">
