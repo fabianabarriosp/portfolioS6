@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import SmileyExplosion from "./SmileyExplosion";
+import { createPortal } from "react-dom";
 
 function Magnet({
   id,
@@ -15,6 +16,8 @@ function Magnet({
   const [dragging, setDragging] = useState(false);
   const [wasLastDragged, setWasLastDragged] = useState(false);
   const [exploding, setExploding] = useState(false);
+  const [confetti, setConfetti] = useState(null);
+  const wrapRef = useRef(null);
   const offsetRef = useRef({ x: 0, y: 0 });
   const velocityRef = useRef({ x: 0, y: 0 });
   const lastPosRef = useRef({ x: startX, y: startY });
@@ -72,6 +75,12 @@ function Magnet({
         e.clientX - mouseStartRef.current.x,
         e.clientY - mouseStartRef.current.y,
       );
+      if (id === "arsenal" && moved < 5) {
+        const r = wrapRef.current.getBoundingClientRect();
+        setConfetti({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
+        setTimeout(() => setConfetti(null), 1800);
+        return;
+      }
       if (isSmiley && moved < 5) {
         setExploding(true);
         return;
@@ -110,6 +119,7 @@ function Magnet({
   return (
     <>
       <div
+        ref={wrapRef}
         onMouseDown={onMouseDown}
         style={{
           position: "absolute",
@@ -164,6 +174,31 @@ function Magnet({
         )}
       </div>
 
+      {confetti &&
+        createPortal(
+          <div
+            className="confetti"
+            style={{ left: confetti.x, top: confetti.y }}
+          >
+            {Array.from({ length: 60 }).map((_, i) => {
+              const angle = Math.random() * Math.PI * 2;
+              const dist = 80 + Math.random() * 220;
+              return (
+                <span
+                  key={i}
+                  style={{
+                    "--dx": Math.cos(angle) * dist + "px",
+                    "--dy": Math.sin(angle) * dist - 60 + "px",
+                    "--r": Math.random() * 720 - 360 + "deg",
+                    background: i % 3 === 0 ? "#ffffff" : "#EF0107",
+                    animationDelay: Math.random() * 0.15 + "s",
+                  }}
+                />
+              );
+            })}
+          </div>,
+          document.body,
+        )}
       {exploding && (
         <SmileyExplosion
           startX={pos.x + (width || 100) / 2}
