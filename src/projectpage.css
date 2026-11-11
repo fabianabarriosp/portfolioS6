@@ -208,3 +208,21 @@
     transition: none;
   }
 }
+
+/* live site button */
+.pp-live {
+  align-self: center;
+  font:
+    700 0.95rem/1 "Atkinson Hyperlegible",
+    system-ui,
+    sans-serif;
+  background: #1c1f1d;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 13px 22px;
+  transition: scale 0.35s cubic-bezier(0.34, 1.8, 0.5, 1);
+}
+.pp-live:hover {
+  scale: 1.06;
+}

@@ -178,7 +178,13 @@ function Magnet({
     <>
       <div
         ref={wrapRef}
-        className={wobbling ? "letter-wobble" : undefined}
+        className={[
+          "magnet-pop",
+          wobbling && "letter-wobble",
+          dragging && "is-dragging",
+        ]
+          .filter(Boolean)
+          .join(" ")}
         onMouseEnter={() => {
           if (isLetter && !dragging) setWobbling(true);
         }}

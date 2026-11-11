@@ -9,6 +9,7 @@ const PROJECTS = {
       "A tribute to the World Wide Web, built as an interactive time machine.",
     media: "/assets/timemachine.mp4",
     caption: "Time machine",
+    link: "https://www-tribute.vercel.app",
     tools: ["Figma", "React", "Vercel"],
     skills: ["Concept", "Interaction design", "Web development"],
   },
@@ -108,6 +109,16 @@ function ProjectPage() {
             <li key={skill}>{skill}</li>
           ))}
         </ul>
+        {project.link && (
+          <a
+            className="pp-live"
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View live site ↗
+          </a>
+        )}
       </article>
     </div>
   );
