@@ -20,6 +20,7 @@ function Magnet({
   const [smoke, setSmoke] = useState(false);
   const [photo, setPhoto] = useState(0);
   const [clicks, setClicks] = useState(0);
+  const [wobbling, setWobbling] = useState(false);
   const wrapRef = useRef(null);
   const offsetRef = useRef({ x: 0, y: 0 });
   const velocityRef = useRef({ x: 0, y: 0 });
@@ -30,6 +31,44 @@ function Magnet({
   const mouseStartRef = useRef({ x: 0, y: 0 });
 
   const isSmiley = id === "smiley";
+  const isClickable =
+    isSmiley ||
+    [
+      "venezuela",
+      "me",
+      "arsenal",
+      "abudhabi",
+      "concert ticket",
+      "dublin",
+      "lasvegas",
+      "london",
+      "madrid",
+      "malta",
+      "mexico",
+      "paperclip",
+      "photostrip",
+      "portugal",
+      "postit",
+      "singapore",
+      "star",
+      "switzerland",
+    ].includes(id);
+  const isLetter = [
+    "F",
+    "A1",
+    "B1",
+    "I1",
+    "A2",
+    "N",
+    "A3",
+    "B2",
+    "A4",
+    "R1",
+    "R2",
+    "I2",
+    "O",
+    "S",
+  ].includes(id);
 
   // Reset position on resize
   useEffect(() => {
@@ -127,12 +166,25 @@ function Magnet({
     };
   }, [dragging]);
 
-  const zIndex = dragging ? 999 : wasLastDragged ? 50 : (zIndexOverride ?? 1);
+  const zIndex = dragging
+    ? 999
+    : ["star", "paperclip", "lasvegas"].includes(id)
+      ? 60
+      : wasLastDragged
+        ? 50
+        : (zIndexOverride ?? 1);
 
   return (
     <>
       <div
         ref={wrapRef}
+        className={wobbling ? "letter-wobble" : undefined}
+        onMouseEnter={() => {
+          if (isLetter && !dragging) setWobbling(true);
+        }}
+        onAnimationEnd={(e) => {
+          if (e.target === e.currentTarget) setWobbling(false);
+        }}
         onMouseDown={onMouseDown}
         style={{
           position: "absolute",
@@ -140,7 +192,7 @@ function Magnet({
           top: pos.y,
           width: width || 100,
           height: height || "auto",
-          cursor: dragging ? "grabbing" : "grab",
+          cursor: dragging ? "grabbing" : isClickable ? "pointer" : "grab",
           userSelect: "none",
           zIndex,
         }}

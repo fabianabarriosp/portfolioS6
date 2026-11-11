@@ -1,32 +1,55 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./projectpage.css";
 
 const PROJECTS = {
   musicbox: {
     title: "www.time-machine.com",
     description:
       "A tribute to the World Wide Web, built as an interactive time machine.",
-    color: "#f5f0e8",
+    media: "/assets/timemachine.mp4",
+    caption: "Time machine",
+    tools: ["Figma", "React", "Vercel"],
+    skills: ["Concept", "Interaction design", "Web development"],
   },
   brose: {
     title: "Forging Brosé",
     description:
-      "A 3D exploration and landing page for Brosé — a medieval-meets-rosé wine brand with a griffin crest and knight aesthetic.",
-    color: "#ffe4e4",
+      "A 3D logo and showcase landing page for Brosé, a wine brand where medieval knights meet rosé.",
+    media: "/assets/brose.mp4",
+    caption: "Brosé",
+    tools: ["Figma", "Blender", "Vercel"],
+    skills: [
+      "Branding",
+      "3D in Blender",
+      "Web development",
+      "User research",
+      "Iterating on feedback",
+    ],
   },
   fbf: {
-    title: "Frame by Frame — Character Animation",
+    title: "Frame by Frame",
     description:
       "A character animation project exploring frame-by-frame illustration and motion.",
-    color: "#e4f0ff",
+    media: "/assets/fbf.gif",
+    caption: "Frame by frame",
+    tools: ["FlipaClip"],
+    skills: ["Animation", "Illustration", "Character design"],
   },
   royallib: {
-    title: "KB Library — Amexio",
+    title: "KB Library × Amexio",
     description:
-      "An industry project with Amexio, rethinking how the Royal Library can recoomend books without necesarily knowing what the users want.",
-    color: "#e4ffe8",
+      "An industry project with Amexio, rethinking how the Royal Library can recommend books without users knowing exactly what they want.",
+    media: "/assets/royallib.png",
+    caption: "Royal Library",
+    tools: ["Figma", "Miro"],
+    skills: ["User research", "Concept development", "Stakeholder advice"],
   },
 };
+
+function isVideo(src) {
+  return /\.(mp4|mov|webm)$/i.test(src);
+}
 
 function ProjectPage() {
   const { id } = useParams();
@@ -35,7 +58,8 @@ function ProjectPage() {
   const project = PROJECTS[id];
 
   useEffect(() => {
-    setTimeout(() => setVisible(true), 50);
+    const t = setTimeout(() => setVisible(true), 50);
+    return () => clearTimeout(t);
   }, []);
 
   function goBack() {
@@ -46,66 +70,45 @@ function ProjectPage() {
   if (!project) return <div>Project not found</div>;
 
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        backgroundColor: project.color,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        opacity: visible ? 1 : 0,
-        transform: visible
-          ? "perspective(1200px) rotateY(0deg)"
-          : "perspective(1200px) rotateY(-90deg)",
-        transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-        transformOrigin: "left center",
-      }}
-    >
-      <button
-        onClick={goBack}
-        style={{
-          position: "absolute",
-          top: 32,
-          left: 32,
-          background: "white",
-          border: "none",
-          borderRadius: 24,
-          padding: "10px 24px",
-          fontSize: 16,
-          cursor: "pointer",
-          fontWeight: 600,
-          boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
-        }}
-      >
-        ← Back to fridge
+    <div className={visible ? "pp-page pp-visible" : "pp-page"}>
+      <button className="pp-back" onClick={goBack}>
+        <span className="pp-back-dot">←</span>
+        Back
       </button>
 
-      <h1
-        style={{
-          fontSize: 48,
-          fontWeight: 800,
-          textAlign: "center",
-          maxWidth: 700,
-          marginBottom: 24,
-          color: "#1a1a1a",
-        }}
-      >
-        {project.title}
-      </h1>
+      <article className="pp-sheet">
+        <img className="pp-pin" src="/assets/star.png" alt="" />
 
-      <p
-        style={{
-          fontSize: 20,
-          textAlign: "center",
-          maxWidth: 600,
-          color: "#444",
-          lineHeight: 1.6,
-        }}
-      >
-        {project.description}
-      </p>
+        <div className="pp-head">
+          <div className="pp-text">
+            <h1 className="pp-title">{project.title}</h1>
+            <p className="pp-desc">{project.description}</p>
+          </div>
+
+          <div className="pp-polaroid">
+            <img className="pp-clip" src="/assets/paperclip.png" alt="" />
+            <div className="pp-media">
+              {isVideo(project.media) ? (
+                <video src={project.media} autoPlay muted loop playsInline />
+              ) : (
+                <img src={project.media} alt={project.title} />
+              )}
+            </div>
+            <span className="pp-caption">{project.caption}</span>
+          </div>
+        </div>
+
+        <div className="pp-tools">
+          <span className="pp-label">Tools</span>
+          <span className="pp-tools-list">{project.tools.join(" · ")}</span>
+        </div>
+
+        <ul className="pp-tags">
+          {project.skills.map((skill) => (
+            <li key={skill}>{skill}</li>
+          ))}
+        </ul>
+      </article>
     </div>
   );
 }
